@@ -32,5 +32,15 @@ pipeline {
                 }
             }
         }
+        stage('BUild image') {
+            steps {
+                script{
+                    sh """
+                        docker build -t catalogue:${Appversion} .
+                        docker images
+                    """
+                }
+            }
+        }
     }
 }
