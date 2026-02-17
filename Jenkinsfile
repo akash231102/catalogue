@@ -13,12 +13,14 @@ pipeline {
         disableConcurrentBuilds()
     }
     // this is build section
-    stage('Read Version') {
-        steps {
-            script {
+    stages{
+        stage('Read Version') {
+            steps {
+                script {
                     def packageJson = readJSON file: 'package.json'
                     Appversion = packageJson.version
                     echo "app version: ${Appversion}"
+                }
             }
         }
     }
